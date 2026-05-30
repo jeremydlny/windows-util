@@ -90,10 +90,6 @@ Assert-Winget
 Write-Step 1 "1Password"
 Install-Winget -Id "AgileBits.1Password" -Name "1Password"
 
-# ─── 2. Drivers depuis le NAS ─────────────────────────────────────────────────
-Write-Step 2 "Drivers (NAS ou clé)"
-Write-Manual "Ouvre le NAS : \\192.168.1.23"
-Pause-Manual "Installe les drivers nécessaires depuis le NAS, puis reviens"
 
 # ─── 3. Brave ─────────────────────────────────────────────────────────────────
 Write-Step 3 "Brave Browser"
@@ -256,7 +252,6 @@ Write-Host @"
 "@ -ForegroundColor Green
 
 Write-Host "Récap des étapes manuelles restantes :" -ForegroundColor Yellow
-Write-Host "  2  → Drivers depuis \\192.168.1.23" -ForegroundColor Magenta
 Write-Host "  3  → Sync Brave" -ForegroundColor Magenta
 Write-Host "  5  → Profil PS7 (CTT)" -ForegroundColor Magenta
 Write-Host "  6  → Winutil tweaks" -ForegroundColor Magenta
