@@ -104,10 +104,20 @@ Write-Manual "Si ça foire avec winget : https://www.nvidia.com/fr-fr/software/n
 # ─── 5. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
 Write-Step 5 "PowerShell 7 + profil CTT"
 Install-Winget -Id "Microsoft.PowerShell" -Name "PowerShell 7"
-Write-Warn "Le profil CTT doit être lancé dans PowerShell 7 (pas PS5)"
-Write-Manual "Dans PowerShell 7 (admin) :"
-Write-Manual "  irm 'https://github.com/ChrisTitusTech/powershell-profile/raw/main/setup.ps1' | iex"
-Pause-Manual "Lance la commande ci-dessus dans PS7 admin, puis reviens"
+
+# Recharger le PATH pour que pwsh soit dispo sans redémarrer
+$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH", "Machine") + ";" +
+            [System.Environment]::GetEnvironmentVariable("PATH", "User")
+
+$pwsh = Get-Command pwsh -ErrorAction SilentlyContinue
+if ($pwsh) {
+    Write-Host "    Installation du profil CTT dans PS7..."
+    Start-Process pwsh -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm 'https://github.com/ChrisTitusTech/powershell-profile/raw/main/setup.ps1' | iex`"" -Verb RunAs -Wait
+    Write-Ok "Profil CTT installé"
+} else {
+    Write-Warn "pwsh introuvable après installation — redémarre le terminal et lance manuellement :"
+    Write-Manual "  irm 'https://github.com/ChrisTitusTech/powershell-profile/raw/main/setup.ps1' | iex"
+}
 
 # ─── 6. Chocolatey + Winutil (tweaks) ─────────────────────────────────────────
 Write-Step 6 "Chocolatey + Winutil (tweaks)"
