@@ -174,6 +174,19 @@ Write-Manual "Settings Firefox (Notion) : https://www.notion.so/Settings-1f07e34
 Write-Step 16 "VLC"
 Install-Winget -Id "VideoLAN.VLC" -Name "VLC"
 
+
+# ─── Visual Studio Build Tools (requis pour Rust/C++) ────────────────────────
+Write-Step "16.5" "Visual Studio Build Tools (Desktop development with C++)"
+Install-Winget -Id "Microsoft.VisualStudio.2022.BuildTools" -Name "VS Build Tools 2022"
+Write-Host "    Configuration du workload C++..."
+$vsInstaller = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
+if (Test-Path $vsInstaller) {
+    Start-Process $vsInstaller -ArgumentList "modify --installPath ""${env:ProgramFiles}\Microsoft Visual Studio\2022\BuildTools"" --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --quiet --wait" -Wait -NoNewWindow
+    Write-Ok "Workload C++ installé"
+} else {
+    Write-Warn "vs_installer.exe non trouvé — vérifie que VS Build Tools est bien installé"
+}
+
 # ─── 17. brave-volume-restore ─────────────────────────────────────────────────
 Write-Step 17 "brave-volume-restore"
 
