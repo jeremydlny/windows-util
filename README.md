@@ -81,3 +81,7 @@ See settings in Notion.
 - Administrator rights
 - git (for steps 17 and 18)
 - Visual Studio Build Tools with **Desktop development with C++** workload — installed automatically at step 16.5
+
+## Author
+
+Created by [Jeremy Delannoy](https://github.com/jeremydlny)
