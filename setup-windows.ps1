@@ -76,7 +76,6 @@ Install-Winget -Id "AgileBits.1Password" -Name "1Password"
 # ─── 3. Brave ─────────────────────────────────────────────────────────────────
 Write-Step 3 "Brave Browser"
 Install-Winget -Id "Brave.Brave" -Name "Brave"
-Write-Manual "Sync Brave : brave://settings/braveSync/setup (utilise ton code de sync Notion)"
 
 # ─── 5. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
 Write-Step 5 "PowerShell 7 + profil CTT"
@@ -121,8 +120,6 @@ Write-Ok "Winutil terminé — reprise du setup"
 # ─── 7. Zed ───────────────────────────────────────────────────────────────────
 Write-Step 7 "Zed"
 Install-Winget -Id "ZedIndustries.Zed" -Name "Zed"
-Write-Manual "Sync VSCode : Ctrl+Shift+P → 'Settings Sync: Turn On' → GitHub"
-Write-Manual "Extensions Notion : https://www.notion.so/Extensions-cec2244a0cea4a84b4414d6a6ad8b315"
 
 # ─── 8. Spotify ───────────────────────────────────────────────────────────────
 Write-Step 8 "Spotify"
@@ -155,7 +152,6 @@ Install-Winget -Id "Logitech.GHUB" -Name "Logitech G HUB"
 # ─── 15. Firefox ──────────────────────────────────────────────────────────────
 Write-Step 15 "Firefox"
 Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
-Write-Manual "Settings Firefox (Notion) : https://www.notion.so/Settings-1f07e344a1ad809abc9dc3d71d6187c2"
 
 # ─── 16. VLC ──────────────────────────────────────────────────────────────────
 Write-Step 16 "VLC"
