@@ -57,24 +57,6 @@ function Install-Winget {
     }
 }
 
-# ─── Rust (requis pour 17 + 18) ───────────────────────────────────────────────
-
-function Assert-Rust {
-    if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) {
-        Write-Warn "Rust non trouvé — installation via winget..."
-        Install-Winget -Id "Rustlang.Rustup" -Name "Rustup"
-        # Recharger le PATH pour que cargo soit dispo
-        $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH", "Machine") + ";" +
-                    [System.Environment]::GetEnvironmentVariable("PATH", "User")
-        if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) {
-            Write-Warn "cargo toujours absent — relance le script après redémarrage du terminal"
-            return $false
-        }
-    }
-    Write-Ok "Rust/cargo disponible"
-    return $true
-}
-
 # ══════════════════════════════════════════════════════════════════════════════
 Write-Host @"
 
@@ -181,7 +163,7 @@ Write-Step 16 "VLC"
 Install-Winget -Id "VideoLAN.VLC" -Name "VLC"
 
 
-# ─── Visual Studio Build Tools (requis pour Rust/C++) ────────────────────────
+# ─── Visual Studio Build Tools (C++) ─────────────────────────────────────────
 Write-Step "16.5" "Visual Studio Build Tools (Desktop development with C++)"
 Install-Winget -Id "Microsoft.VisualStudio.2022.BuildTools" -Name "VS Build Tools 2022"
 Write-Host "    Configuration du workload C++..."
@@ -191,64 +173,6 @@ if (Test-Path $vsInstaller) {
     Write-Ok "Workload C++ installé"
 } else {
     Write-Warn "vs_installer.exe non trouvé — vérifie que VS Build Tools est bien installé"
-}
-
-# ─── 17. brave-volume-restore ─────────────────────────────────────────────────
-Write-Step 17 "brave-volume-restore"
-
-if (Assert-Rust) {
-    $bvrDir = "$env:TEMP\brave-volume-restore"
-    if (Test-Path $bvrDir) { Remove-Item $bvrDir -Recurse -Force }
-
-    Write-Host "    Clonage du repo..." -NoNewline
-    git clone --depth 1 "https://github.com/jeremydlny/brave-volume-restore.git" $bvrDir 2>&1 | Out-Null
-    Write-Ok "clone OK"
-
-    Write-Host "    Compilation (cargo build --release)..."
-    Push-Location $bvrDir
-    cargo build --release 2>&1 | Out-Null
-    Pop-Location
-
-    if (Test-Path "$bvrDir\target\release\brave-volume-restore.exe") {
-        Write-Host "    Lancement de install.bat..."
-        Push-Location $bvrDir
-        Start-Process "cmd.exe" -ArgumentList "/c install.bat" -Wait -NoNewWindow
-        Pop-Location
-        Write-Ok "brave-volume-restore installé et configuré (démarrage auto au logon)"
-    } else {
-        Write-Warn "Compilation échouée — vérifie manuellement dans $bvrDir"
-    }
-} else {
-    Write-Warn "Étape 17 ignorée (Rust absent) — relance le script après installation de Rust"
-}
-
-# ─── 18. Firewall blocklist manager ───────────────────────────────────────────
-Write-Step 18 "firewall_blocker"
-
-if (Assert-Rust) {
-    $fwDir = "$env:TEMP\firewall_blocker"
-    if (Test-Path $fwDir) { Remove-Item $fwDir -Recurse -Force }
-
-    Write-Host "    Clonage du repo..." -NoNewline
-    git clone --depth 1 "https://github.com/jeremydlny/firewall.git" $fwDir 2>&1 | Out-Null
-    Write-Ok "clone OK"
-
-    Write-Host "    Compilation (cargo build --release)..."
-    Push-Location $fwDir
-    cargo build --release 2>&1 | Out-Null
-    Pop-Location
-
-    $fwExe = "$fwDir\target\release\firewall_blocker.exe"
-    if (Test-Path $fwExe) {
-        Write-Host "    Application des blocklists + installation tâche planifiée (03:00)..."
-        Start-Process $fwExe -ArgumentList "--install-task" -Wait -NoNewWindow -Verb RunAs
-        Start-Process $fwExe -Wait -NoNewWindow -Verb RunAs
-        Write-Ok "firewall_blocker installé — tâche planifiée quotidienne à 03:00, 84k+ IPs bloquées"
-    } else {
-        Write-Warn "Compilation échouée — vérifie manuellement dans $fwDir"
-    }
-} else {
-    Write-Warn "Étape 18 ignorée (Rust absent) — relance le script après installation de Rust"
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
