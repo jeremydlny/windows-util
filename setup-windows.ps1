@@ -168,9 +168,9 @@ Write-Host @"
 
 "@ -ForegroundColor Green
 
-Write-Host "Récap des étapes manuelles restantes :" -ForegroundColor Yellow
-Write-Host "  3  → Sync Brave" -ForegroundColor Magenta
-Write-Host "  5  → Profil PS7 (CTT)" -ForegroundColor Magenta
-Write-Host "  6  → Winutil tweaks" -ForegroundColor Magenta
+Write-Host "Récap des configurations à vérifier :" -ForegroundColor Yellow
+Write-Host "  3  → Settings Firefox" -ForegroundColor Magenta
+Write-Host "  5  → Vérifier le profil PS7 (CTT)" -ForegroundColor Magenta
+Write-Host "  6  → Appliquer les tweaks souhaités dans Winutil" -ForegroundColor Magenta
 Write-Host "  7  → Configurer Zed / synchronisation si souhaitée" -ForegroundColor Magenta
-Write-Host "  15 → Settings Firefox" -ForegroundColor Magenta
+Write-Host "  15 → Sync Brave" -ForegroundColor Magenta
