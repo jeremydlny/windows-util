@@ -72,13 +72,12 @@ Assert-Winget
 Write-Step 1 "1Password"
 Install-Winget -Id "AgileBits.1Password" -Name "1Password"
 
-
-# ─── 3. Firefox ─────────────────────────────────────────────────────────────────
-Write-Step 3 "Firefox"
+# ─── 2. Firefox ────────────────────────────────────────────────────────────────
+Write-Step 2 "Firefox"
 Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
 
-# ─── 5. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
-Write-Step 5 "PowerShell 7 + profil CTT"
+# ─── 3. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
+Write-Step 3 "PowerShell 7 + profil CTT"
 Install-Winget -Id "Microsoft.PowerShell" -Name "PowerShell 7"
 
 # Recharger le PATH pour que pwsh soit dispo sans redémarrer
@@ -95,8 +94,8 @@ if ($pwsh) {
     Write-Manual "  irm 'https://github.com/ChrisTitusTech/powershell-profile/raw/main/setup.ps1' | iex"
 }
 
-# ─── 6. Chocolatey + Winutil (tweaks) ─────────────────────────────────────────
-Write-Step 6 "Chocolatey + Winutil (tweaks)"
+# ─── 4. Chocolatey + Winutil (tweaks) ─────────────────────────────────────────
+Write-Step 4 "Chocolatey + Winutil (tweaks)"
 
 # Chocolatey
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
@@ -117,46 +116,45 @@ Start-Process pwsh -Verb RunAs -Wait -ArgumentList @(
 )
 Write-Ok "Winutil terminé — reprise du setup"
 
-# ─── 7. Zed ───────────────────────────────────────────────────────────────────
-Write-Step 7 "Zed"
+# ─── 5. Zed ───────────────────────────────────────────────────────────────────
+Write-Step 5 "Zed"
 Install-Winget -Id "ZedIndustries.Zed" -Name "Zed"
 
-# ─── 8. Spotify ───────────────────────────────────────────────────────────────
-Write-Step 8 "Spotify"
+# ─── 6. Spotify ───────────────────────────────────────────────────────────────
+Write-Step 6 "Spotify"
 Install-Winget -Id "Spotify.Spotify" -Name "Spotify"
 
-# ─── 9. Discord ───────────────────────────────────────────────────────────────
-Write-Step 9 "Discord"
+# ─── 7. Discord ───────────────────────────────────────────────────────────────
+Write-Step 7 "Discord"
 Install-Winget -Id "Discord.Discord" -Name "Discord"
 
-# ─── 10. Plex ─────────────────────────────────────────────────────────────────
-Write-Step 10 "Plex"
+# ─── 8. Plex ──────────────────────────────────────────────────────────────────
+Write-Step 8 "Plex"
 Install-Winget -Id "Plex.Plex" -Name "Plex"
 
-# ─── 11. Steam ────────────────────────────────────────────────────────────────
-Write-Step 11 "Steam"
+# ─── 9. Steam ─────────────────────────────────────────────────────────────────
+Write-Step 9 "Steam"
 Install-Winget -Id "Valve.Steam" -Name "Steam"
 
-# ─── 12. Elgato CameraHub ─────────────────────────────────────────────────────
-Write-Step 12 "Elgato CameraHub"
+# ─── 10. Elgato CameraHub ─────────────────────────────────────────────────────
+Write-Step 10 "Elgato CameraHub"
 Install-Winget -Id "Elgato.CameraHub" -Name "CameraHub"
 
-# ─── 13. Elgato Stream Deck ───────────────────────────────────────────────────
-Write-Step 13 "Elgato Stream Deck"
+# ─── 11. Elgato Stream Deck ───────────────────────────────────────────────────
+Write-Step 11 "Elgato Stream Deck"
 Install-Winget -Id "Elgato.StreamDeck" -Name "Stream Deck"
 
-# ─── 14. Logitech G HUB ───────────────────────────────────────────────────────
-Write-Step 14 "Logitech G HUB"
+# ─── 12. Logitech G HUB ───────────────────────────────────────────────────────
+Write-Step 12 "Logitech G HUB"
 Install-Winget -Id "Logitech.GHUB" -Name "Logitech G HUB"
 
-# ─── 15. Brave ──────────────────────────────────────────────────────────────
-Write-Step 15 "Brave Browser"
+# ─── 13. Brave ────────────────────────────────────────────────────────────────
+Write-Step 13 "Brave Browser"
 Install-Winget -Id "Brave.Brave" -Name "Brave"
 
-# ─── 16. VLC ──────────────────────────────────────────────────────────────────
-Write-Step 16 "VLC"
+# ─── 14. VLC ──────────────────────────────────────────────────────────────────
+Write-Step 14 "VLC"
 Install-Winget -Id "VideoLAN.VLC" -Name "VLC"
-
 
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -169,8 +167,8 @@ Write-Host @"
 "@ -ForegroundColor Green
 
 Write-Host "Récap des configurations à vérifier :" -ForegroundColor Yellow
-Write-Host "  3  → Settings Firefox" -ForegroundColor Magenta
-Write-Host "  5  → Vérifier le profil PS7 (CTT)" -ForegroundColor Magenta
-Write-Host "  6  → Appliquer les tweaks souhaités dans Winutil" -ForegroundColor Magenta
-Write-Host "  7  → Configurer Zed / synchronisation si souhaitée" -ForegroundColor Magenta
-Write-Host "  15 → Sync Brave" -ForegroundColor Magenta
+Write-Host "  2  → Settings Firefox" -ForegroundColor Magenta
+Write-Host "  3  → Vérifier le profil PS7 (CTT)" -ForegroundColor Magenta
+Write-Host "  4  → Appliquer les tweaks souhaités dans Winutil" -ForegroundColor Magenta
+Write-Host "  5  → Configurer Zed / synchronisation si souhaitée" -ForegroundColor Magenta
+Write-Host "  13 → Sync Brave" -ForegroundColor Magenta
