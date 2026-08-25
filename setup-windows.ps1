@@ -78,11 +78,6 @@ Write-Step 3 "Brave Browser"
 Install-Winget -Id "Brave.Brave" -Name "Brave"
 Write-Manual "Sync Brave : brave://settings/braveSync/setup (utilise ton code de sync Notion)"
 
-# ─── 4. NVIDIA Drivers ────────────────────────────────────────────────────────
-Write-Step 4 "NVIDIA App (drivers)"
-Install-Winget -Id "Nvidia.NVIDIAApp" -Name "NVIDIA App"
-Write-Manual "Si ça foire avec winget : https://www.nvidia.com/fr-fr/software/nvidia-app/"
-
 # ─── 5. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
 Write-Step 5 "PowerShell 7 + profil CTT"
 Install-Winget -Id "Microsoft.PowerShell" -Name "PowerShell 7"
@@ -119,11 +114,10 @@ Write-Manual "Winutil (tweaks Windows) — dans PS7 admin :"
 Write-Manual "  irm 'https://christitus.com/win' | iex"
 Pause-Manual "Lance Winutil, applique tes tweaks, puis reviens"
 
-# ─── 7. VSCode + Sync GitHub ──────────────────────────────────────────────────
-Write-Step 7 "VSCode"
-Install-Winget -Id "Microsoft.VisualStudioCode" -Name "VSCode"
+# ─── 7. Zed ───────────────────────────────────────────────────────────────────
+Write-Step 7 "Zed"
+Install-Winget -Id "ZedIndustries.Zed" -Name "Zed"
 Write-Manual "Sync VSCode : Ctrl+Shift+P → 'Settings Sync: Turn On' → GitHub"
-Write-Manual "Extensions Notion : https://www.notion.so/Extensions-cec2244a0cea4a84b4414d6a6ad8b315"
 
 # ─── 8. Spotify ───────────────────────────────────────────────────────────────
 Write-Step 8 "Spotify"
@@ -156,24 +150,11 @@ Install-Winget -Id "Logitech.GHUB" -Name "Logitech G HUB"
 # ─── 15. Firefox ──────────────────────────────────────────────────────────────
 Write-Step 15 "Firefox"
 Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
-Write-Manual "Settings Firefox (Notion) : https://www.notion.so/Settings-1f07e344a1ad809abc9dc3d71d6187c2"
 
 # ─── 16. VLC ──────────────────────────────────────────────────────────────────
 Write-Step 16 "VLC"
 Install-Winget -Id "VideoLAN.VLC" -Name "VLC"
 
-
-# ─── Visual Studio Build Tools (C++) ─────────────────────────────────────────
-Write-Step "16.5" "Visual Studio Build Tools (Desktop development with C++)"
-Install-Winget -Id "Microsoft.VisualStudio.2022.BuildTools" -Name "VS Build Tools 2022"
-Write-Host "    Configuration du workload C++..."
-$vsInstaller = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
-if (Test-Path $vsInstaller) {
-    Start-Process $vsInstaller -ArgumentList "modify --installPath ""${env:ProgramFiles}\Microsoft Visual Studio\2022\BuildTools"" --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --quiet --wait" -Wait -NoNewWindow
-    Write-Ok "Workload C++ installé"
-} else {
-    Write-Warn "vs_installer.exe non trouvé — vérifie que VS Build Tools est bien installé"
-}
 
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -189,5 +170,5 @@ Write-Host "Récap des étapes manuelles restantes :" -ForegroundColor Yellow
 Write-Host "  3  → Sync Brave" -ForegroundColor Magenta
 Write-Host "  5  → Profil PS7 (CTT)" -ForegroundColor Magenta
 Write-Host "  6  → Winutil tweaks" -ForegroundColor Magenta
-Write-Host "  7  → Sync VSCode Extensions" -ForegroundColor Magenta
+Write-Host "  7  → Configurer Zed / synchronisation si souhaitée" -ForegroundColor Magenta
 Write-Host "  15 → Settings Firefox" -ForegroundColor Magenta
