@@ -110,13 +110,19 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Write-Skip "Chocolatey déjà présent"
 }
 
-Write-Host "    Lancement de Winutil..."
-Start-Process pwsh -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm 'https://christitus.com/win' | iex`"" -Verb RunAs -Wait
-Write-Ok "Winutil fermé — reprise du setup"
+Write-Host "    Lancement de Winutil dans une nouvelle fenêtre..."
+Start-Process pwsh -Verb RunAs -Wait -ArgumentList @(
+    "-NoProfile",
+    "-ExecutionPolicy", "Bypass",
+    "-Command", "irm 'https://christitus.com/win' | iex"
+)
+Write-Ok "Winutil terminé — reprise du setup"
 
 # ─── 7. Zed ───────────────────────────────────────────────────────────────────
 Write-Step 7 "Zed"
 Install-Winget -Id "ZedIndustries.Zed" -Name "Zed"
+Write-Manual "Sync VSCode : Ctrl+Shift+P → 'Settings Sync: Turn On' → GitHub"
+Write-Manual "Extensions Notion : https://www.notion.so/Extensions-cec2244a0cea4a84b4414d6a6ad8b315"
 
 # ─── 8. Spotify ───────────────────────────────────────────────────────────────
 Write-Step 8 "Spotify"
@@ -149,6 +155,7 @@ Install-Winget -Id "Logitech.GHUB" -Name "Logitech G HUB"
 # ─── 15. Firefox ──────────────────────────────────────────────────────────────
 Write-Step 15 "Firefox"
 Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
+Write-Manual "Settings Firefox (Notion) : https://www.notion.so/Settings-1f07e344a1ad809abc9dc3d71d6187c2"
 
 # ─── 16. VLC ──────────────────────────────────────────────────────────────────
 Write-Step 16 "VLC"
