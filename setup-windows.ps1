@@ -110,14 +110,13 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Write-Skip "Chocolatey déjà présent"
 }
 
-Write-Manual "Winutil (tweaks Windows) — dans PS7 admin :"
-Write-Manual "  irm 'https://christitus.com/win' | iex"
-Pause-Manual "Lance Winutil, applique tes tweaks, puis reviens"
+Write-Host "    Lancement de Winutil..."
+Start-Process pwsh -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm 'https://christitus.com/win' | iex`"" -Verb RunAs -Wait
+Write-Ok "Winutil fermé — reprise du setup"
 
 # ─── 7. Zed ───────────────────────────────────────────────────────────────────
 Write-Step 7 "Zed"
 Install-Winget -Id "ZedIndustries.Zed" -Name "Zed"
-Write-Manual "Sync VSCode : Ctrl+Shift+P → 'Settings Sync: Turn On' → GitHub"
 
 # ─── 8. Spotify ───────────────────────────────────────────────────────────────
 Write-Step 8 "Spotify"
