@@ -73,9 +73,9 @@ Write-Step 1 "1Password"
 Install-Winget -Id "AgileBits.1Password" -Name "1Password"
 
 
-# ─── 3. Brave ─────────────────────────────────────────────────────────────────
-Write-Step 3 "Brave Browser"
-Install-Winget -Id "Brave.Brave" -Name "Brave"
+# ─── 3. Firefox ─────────────────────────────────────────────────────────────────
+Write-Step 3 "Firefox"
+Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
 
 # ─── 5. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
 Write-Step 5 "PowerShell 7 + profil CTT"
@@ -149,9 +149,9 @@ Install-Winget -Id "Elgato.StreamDeck" -Name "Stream Deck"
 Write-Step 14 "Logitech G HUB"
 Install-Winget -Id "Logitech.GHUB" -Name "Logitech G HUB"
 
-# ─── 15. Firefox ──────────────────────────────────────────────────────────────
-Write-Step 15 "Firefox"
-Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
+# ─── 15. Brave ──────────────────────────────────────────────────────────────
+Write-Step 15 "Brave Browser"
+Install-Winget -Id "Brave.Brave" -Name "Brave"
 
 # ─── 16. VLC ──────────────────────────────────────────────────────────────────
 Write-Step 16 "VLC"
