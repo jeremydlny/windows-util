@@ -1,3 +1,4 @@
+```powershell
 #Requires -RunAsAdministrator
 <#
 .SYNOPSIS
@@ -72,9 +73,9 @@ Assert-Winget
 Write-Step 1 "1Password"
 Install-Winget -Id "AgileBits.1Password" -Name "1Password"
 
-# ─── 2. Firefox ────────────────────────────────────────────────────────────────
-Write-Step 2 "Firefox"
-Install-Winget -Id "Mozilla.Firefox" -Name "Firefox"
+# ─── 2. Helium ────────────────────────────────────────────────────────────────
+Write-Step 2 "Helium"
+Install-Winget -Id "imputnet.Helium" -Name "Helium"
 
 # ─── 3. PowerShell 7 + profil ChrisTitusTech ──────────────────────────────────
 Write-Step 3 "PowerShell 7 + profil CTT"
@@ -167,8 +168,9 @@ Write-Host @"
 "@ -ForegroundColor Green
 
 Write-Host "Récap des configurations à vérifier :" -ForegroundColor Yellow
-Write-Host "  2  → Settings Firefox" -ForegroundColor Magenta
+Write-Host "  2  → Settings Helium" -ForegroundColor Magenta
 Write-Host "  3  → Vérifier le profil PS7 (CTT)" -ForegroundColor Magenta
 Write-Host "  4  → Appliquer les tweaks souhaités dans Winutil" -ForegroundColor Magenta
 Write-Host "  5  → Configurer Zed / synchronisation si souhaitée" -ForegroundColor Magenta
 Write-Host "  13 → Sync Brave" -ForegroundColor Magenta
+```
