@@ -29,7 +29,7 @@ Some tools require additional configuration after installation, while Winutil an
 | #  | App / Tool                  | Mode                               | winget ID / source                |
 | -- | --------------------------- | ---------------------------------- | --------------------------------- |
 | 1  | 1Password                   | Automatic                          | `AgileBits.1Password`             |
-| 2  | Firefox                     | Automatic + settings               | `Mozilla.Firefox`                 |
+| 2  | Helium                      | Automatic + settings               | `imputnet.Helium`                 |
 | 3  | PowerShell 7 + CTT profile  | Automatic + configuration check    | `Microsoft.PowerShell`            |
 | 4  | Chocolatey + Winutil tweaks | Automatic + user tweaks            | Chocolatey + `christitus.com/win` |
 | 5  | Zed                         | Automatic + optional configuration | `ZedIndustries.Zed`               |
@@ -47,9 +47,9 @@ Some tools require additional configuration after installation, while Winutil an
 
 ## Configuration to verify
 
-### 2 — Firefox Settings
+### 2 — Helium Settings
 
-Apply your preferred Firefox settings after installation.
+Apply your preferred Helium settings after installation.
 
 ### 3 — PowerShell 7 + Chris Titus Tech profile
 
